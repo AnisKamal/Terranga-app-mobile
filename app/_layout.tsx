@@ -1,11 +1,14 @@
 import { useThemeColors } from "@/hooks/useThemeColors";
 import { Ionicons } from "@expo/vector-icons";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Tabs } from "expo-router";
 
+const queryClient = new QueryClient();
 
 export default function TabsLayout() {
   const colors = useThemeColors(); 
 return (
+  <QueryClientProvider client={queryClient} >
   <Tabs
     screenOptions={{
       tabBarActiveTintColor: colors.green,
@@ -34,6 +37,7 @@ return (
             />
 
   </Tabs>
+  </QueryClientProvider>
 );
 
 }

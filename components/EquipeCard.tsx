@@ -2,7 +2,7 @@ import { Image, Text } from "react-native";
 import { Card } from "./Card";
 
 type Props = {
-    value: string, 
+    value?: string, 
 }
 
 export function EquipeCard({value} : Props){

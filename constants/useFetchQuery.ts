@@ -1,15 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 
-const endpoint = "http://localhost:8099" 
+const endpoint = "http://192.168.11.218:8099/" 
 
 type API = {
-    'api/v1/matchs' : {
+    'api/v1/matchs' : [ {
         date: string, 
         homeName: string,
         homeLogo: string, 
         awayName: string,
         awayLogo: string
-    }
+    } ]
 }; 
 
 export function useFetchQuery<T extends keyof API>(
@@ -20,6 +20,7 @@ export function useFetchQuery<T extends keyof API>(
         (acc, [key, value]) => acc.replaceAll(`[${key}]`, String(value)), 
         path as string
     )
+    console.log("valeur de url : " + localUrl)
     return useQuery({
         queryKey: [localUrl],
          queryFn: async () => {
